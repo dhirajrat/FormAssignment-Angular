@@ -1,0 +1,66 @@
+<div *ngIf="dataSource == null; then thenBlock; else elseBlock"></div>
+<ng-template #thenBlock>
+  <p style="margin-top: 3%; align-items: center">No content to show</p>
+</ng-template>
+<ng-template #elseBlock>
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8"
+    *ngIf="!dataSource[-1]"
+  >
+    <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="no">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let element">
+        {{ dataSource.indexOf(element) + 1 }}
+      </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.username }}</td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="mobile">
+      <th mat-header-cell *matHeaderCellDef>Mobile</th>
+      <td mat-cell *matCellDef="let element">{{ element.mobile }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="country">
+      <th mat-header-cell *matHeaderCellDef>Country</th>
+      <td mat-cell *matCellDef="let element">{{ element.country }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="skills">
+      <th mat-header-cell *matHeaderCellDef>Skills</th>
+      <td mat-cell *matCellDef="let element">{{ element.skills }}</td>
+    </ng-container>
+
+    <!-- Action -->
+    <ng-container matColumnDef="no_del">
+      <th mat-header-cell *matHeaderCellDef>Remove</th>
+      <td mat-cell *matCellDef="let element">
+        <button (click)="removePerson(element.mobile)" mat-fab color="red">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</ng-template>

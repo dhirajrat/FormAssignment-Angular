@@ -1,0 +1,132 @@
+<div class="form-container">
+  <div class="form">
+    <form
+      [formGroup]="myReactiveForm"
+      (ngSubmit)="submit()"
+      class="form-content"
+    >
+      <div class="form-head-text">
+        <h4>Add User</h4>
+      </div>
+      <div class="form-content">
+        <div class="field-block">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>UserName </mat-label>
+            <input
+              matInput
+              type="text"
+              class="input"
+              id="username"
+              name="username"
+              formControlName="username"
+              placeholder="UserName"
+            />
+          </mat-form-field>
+
+          <small
+            class="text-danger"
+            *ngIf="
+              !myReactiveForm.get('username')?.valid &&
+              myReactiveForm.get('username')?.touched
+            "
+            >Enter a valid name</small
+          >
+        </div>
+
+        <div class="field-block">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label class="formlabel" for="mobile">Mobile : </mat-label>
+            <input
+              matInput
+              id="mobile"
+              formControlName="mobile"
+              type="number"
+              placeholder="Mobile No"
+              class=""
+            />
+          </mat-form-field>
+          <small
+            class="text-danger"
+            *ngIf="
+              !myReactiveForm.get('mobile')?.valid &&
+              myReactiveForm.get('mobile')?.touched
+            "
+            >Enter a valid mobile number</small
+          >
+        </div>
+
+        <div class="field-block">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label class="formlabel" for="email">Email : </mat-label>
+            <input
+              matInput
+              id="email"
+              formControlName="email"
+              type="email"
+              placeholder="Email"
+              class=""
+            />
+          </mat-form-field>
+          <small
+            class="text-danger"
+            *ngIf="
+              !myReactiveForm.get('email')?.valid &&
+              myReactiveForm.get('email')?.touched
+            "
+            >Enter a valid Email ID</small
+          >
+        </div>
+        <div class="field-block">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label class="formlabel" for="country">Country : </mat-label>
+            <mat-select
+              id="country"
+              formControlName="country"
+              type="text"
+              class=""
+            >
+              <mat-option
+                *ngFor="let country of countries"
+                [value]="country.value"
+              >
+                {{ country.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <small
+            class="text-danger"
+            *ngIf="
+              !myReactiveForm.get('country')?.valid &&
+              myReactiveForm.get('country')?.touched
+            "
+            >Enter a valid Country</small
+          >
+        </div>
+        <div class="field-block">
+          <mat-form-field
+            appearance="outline"
+            class="form-field-skill"
+            formArrayName="skills"
+            *ngFor="let skill of skills.controls; index as i"
+          >
+            <mat-label>Skills : </mat-label>
+            <div>
+              <input matInput [formControlName]="i" placeholder="Add Skills" />
+            </div>
+          </mat-form-field>
+          <button
+            type="button"
+            (click)="onAddSkills()"
+            style="margin-bottom: 30%"
+          >
+            Add Skills
+          </button>
+        </div>
+      </div>
+
+      <div class="submitButton">
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
