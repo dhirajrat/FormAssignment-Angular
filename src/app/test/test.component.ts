@@ -16,27 +16,19 @@
 
 import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { TestService } from '../service/test.service';
 
 @Component({
   selector: 'app-test',
-  template: `
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <div formArrayName="cities">
-        <div *ngFor="let city of cities.controls; index as i">
-          <input [formControlName]="i" placeholder="City" />
-        </div>
-      </div>
-      <button>Submit</button>
-    </form>
-
-    <button (click)="addCity()">Add City</button>
-    <button (click)="setPreset()">Set preset</button>
-  `,
+  templateUrl: './test.component.html',
+  styleUrls: ['./test.component.scss'],
 })
 export class TestComponent {
+  test = 15;
   form = new FormGroup({
     cities: new FormArray([new FormControl('SF'), new FormControl('NY')]),
   });
+  constructor(public testservice: TestService) {}
 
   get cities(): FormArray {
     return this.form.get('cities') as FormArray;
@@ -49,6 +41,8 @@ export class TestComponent {
   onSubmit() {
     console.log(this.cities.value); // ['SF', 'NY']
     console.log(this.form.value); // { cities: ['SF', 'NY'] }
+    console.log('notivalue: ', this.cities.value[0]);
+    this.testservice.notiCount = this.cities.value[0];
   }
 
   setPreset() {

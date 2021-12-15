@@ -15,6 +15,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
+import { MaintestComponent } from './maintest/maintest.component';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
     TestComponent,
     HeaderComponent,
     DisplayRecordsComponent,
+    MaintestComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatSelectModule,
     MatTableModule,
     MatIconModule,
+    MatBadgeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

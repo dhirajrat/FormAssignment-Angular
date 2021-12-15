@@ -1,6 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnChanges, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TestService } from '../service/test.service';
 import { UserDataService } from '../service/user-data.service';
 
 @Component({
@@ -8,12 +9,15 @@ import { UserDataService } from '../service/user-data.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnChanges {
+  test = this.testservice.notiCount;
   form = new FormGroup({
     record: new FormControl('', Validators.required),
   });
 
   onSubmit() {
+    console.log('noticount: ', this.testservice.notiCount, this.test);
+
     if (this.form.valid) {
       console.log(this.form.value);
       this._userDataService.searchnumber = this.form.value.record;
@@ -23,10 +27,15 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  ngOnChanges() {
+    this.test = this.testservice.notiCount;
+  }
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    @Inject(UserDataService) private _userDataService = UserDataService
+    @Inject(UserDataService) private _userDataService = UserDataService,
+    public testservice: TestService
   ) {}
 
   ngOnInit(): void {}
