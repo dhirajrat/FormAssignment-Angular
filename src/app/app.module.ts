@@ -17,6 +17,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MaintestComponent } from './maintest/maintest.component';
 import { MatBadgeModule } from '@angular/material/badge';
+import { TestService } from './service/test.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatIconModule,
     MatBadgeModule,
   ],
-  providers: [],
+  providers: [TestService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

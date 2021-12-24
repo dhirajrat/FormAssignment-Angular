@@ -5,10 +5,17 @@ import { Injectable } from '@angular/core';
 })
 export class UserDataService {
   userdata: any = [];
+  private static countObjOfUserDataService: number = 0;
   searchnumber: String;
   static userdata: any;
   static searchnumber: number = 0;
-  constructor() {}
+  constructor() {
+    UserDataService.countObjOfUserDataService++;
+    console.log(
+      'Object of User Data Service Created :',
+      UserDataService.countObjOfUserDataService
+    );
+  }
 
   static saveDataItem(user: any) {
     if (localStorage.getItem('userdata') == null) {

@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class TestService {
   notiCount = 0;
+  private static countObjOfTestService: number = 0;
   //test Comment
   //test
   //test
@@ -12,5 +11,11 @@ export class TestService {
   // test
   // test
 
-  constructor() {}
+  constructor() {
+    TestService.countObjOfTestService++;
+    console.log(
+      'Object of Test Service Created :',
+      TestService.countObjOfTestService
+    );
+  }
 }
