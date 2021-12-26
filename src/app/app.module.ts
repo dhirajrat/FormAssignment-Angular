@@ -18,6 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MaintestComponent } from './maintest/maintest.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { TestService } from './service/test.service';
+import { FormarrayComponent } from './practice/formarray/formarray.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { TestService } from './service/test.service';
     HeaderComponent,
     DisplayRecordsComponent,
     MaintestComponent,
+    FormarrayComponent,
   ],
   imports: [
     BrowserModule,

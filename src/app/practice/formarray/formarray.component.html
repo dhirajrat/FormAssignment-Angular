@@ -1,0 +1,74 @@
+<div class="form-container">
+  <div class="form">
+    <form [formGroup]="myForm" (ngSubmit)="submit()" class="form-content">
+      <div class="form-head-text">
+        <h4>Form Array Section Wise</h4>
+      </div>
+      <div
+        formArrayName="myFormArr"
+        *ngFor="let form of getControls(); index as i"
+      >
+        <div [formGroupName]="i">
+          <div class="form-content">
+            <div formGroupName="sec1">
+              <h1>section 1</h1>
+              <div class="field-block">
+                <mat-form-field appearance="outline" class="form-field">
+                  <mat-label>sec 1 field 1 </mat-label>
+                  <input
+                    matInput
+                    type="text"
+                    class="input"
+                    id="sec1field1"
+                    name="sec1field1"
+                    formControlName="sec1field1"
+                    placeholder="sec 1 field 1"
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+            <div formGroupName="sec2">
+              <h1>section 2</h1>
+              <div class="field-block">
+                <mat-form-field appearance="outline" class="form-field">
+                  <mat-label>sec 2 field 1 </mat-label>
+                  <input
+                    matInput
+                    type="text"
+                    class="input"
+                    id="sec2field1"
+                    name="sec2field1"
+                    formControlName="sec2field1"
+                    placeholder="sec 2 field 1"
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+            <div formGroupName="sec3">
+              <h1>section 3</h1>
+              <div class="field-block">
+                <mat-form-field appearance="outline" class="form-field">
+                  <mat-label>sec 3 field 1 </mat-label>
+                  <input
+                    matInput
+                    type="text"
+                    class="input"
+                    id="sec3field1"
+                    name="sec3field1"
+                    formControlName="sec3field1"
+                    placeholder="sec 3 field 1"
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+      </div>
+
+      <div class="submitButton">
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
