@@ -25,6 +25,9 @@ import { TestService } from '../service/test.service';
 })
 export class TestComponent {
   test = 15;
+
+  // test
+
   form = new FormGroup({
     cities: new FormArray([new FormControl('SF'), new FormControl('NY')]),
   });
